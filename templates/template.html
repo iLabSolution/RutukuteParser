@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flask Template Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+      .container {
+        max-width: 1008px;
+        padding-top: 100px;
+        display: grid;
+        grid-template-columns: auto auto;
+        background-color: #2196F3;
+      }
+      .newsContainer {
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 500px;
+        border-width: 2px;
+        border-style: solid;
+        border-color: black;
+      }
+      .newsContainer h3 {
+          text-align: center;
+          display: inline;
+          padding-bottom: 0;
+          padding-top: 0;
+      }
+      .imgAndDisc {
+          display: grid;
+          grid-template-columns: auto auto;
+      }
+      .imgAndDisc img{
+          width: 240px;
+          height: 160px;
+          margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Url input form -->
+    <form method ="post" action="">
+        <p>
+            {{form.url.label}}<br>
+            {{form.url(size=30)}}
+        </p>
+        <p>{{form.parse}}</p>
+    </form>
+    <!-- Main content -->
+    <div class="container">
+        {% for news in newsList %}
+        <div class="newsContainer">
+            <div class="imgAndDisc">
+                <a href="{{news['link']}}" target="_blank">
+                    <img src="{{news['image']}}" alt="image"/>
+                </a>
+                <div>
+                    <h4>{{news['title']}}</h4>
+                    <p>{{news['desc']}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </body>
+</html>
